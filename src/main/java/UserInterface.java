@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -124,10 +125,15 @@ public class UserInterface {
     }
 
     private void searchSuperhero() {
+        ArrayList<Superhero> superheroMatch;
         System.out.println("Search: ");
         String superheroName = s.next();
-        controller.searchSuperhero(superheroName);
+        superheroMatch = controller.searchSuperhero(superheroName);
 
+        System.out.println("These heroes were found:");
+        for (Superhero superhero : superheroMatch) {
+            System.out.println(superhero.getSuperheroName());
+        }
     }
 
     private void editSuperhero() {

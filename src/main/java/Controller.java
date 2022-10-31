@@ -12,8 +12,8 @@ public class Controller {
         return database.getSuperheroes();
     }
 
-    public void searchSuperhero(String superheroName) {
-        database.searchSuperhero(superheroName);
+    public ArrayList<Superhero> searchSuperhero(String superheroName) {
+        return database.searchSuperhero(superheroName);
     }
 
     public void editSuperhero(int index,String superheroName,String superPowers,String realName,int yearCreated,String isHuman,double strength) {

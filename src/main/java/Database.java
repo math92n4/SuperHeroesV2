@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,20 +16,18 @@ public class Database {
         return superheroes;
     }
 
-    public List<Superhero> searchSuperhero(String superheroName) {
+    public ArrayList<Superhero> searchSuperhero(String superheroName) {
+
+        ArrayList<Superhero> superheroesMatch = new ArrayList<>();
 
         for (Superhero søgning : superheroes) {
-            if(søgning.getSuperheroName().equals(superheroName)) {
-                System.out.println("Denne helt er oprettet: " + søgning.getSuperheroName());
-            }
+            if(søgning.getSuperheroName().toLowerCase().startsWith(superheroName.toLowerCase())) {
 
-            else if(søgning.getSuperheroName().startsWith(superheroName)) {
-                System.out.println("Denne helt er oprettet: " + søgning.getSuperheroName());
-                break;
+                superheroesMatch.add(søgning);
             }
 
         }
-        return superheroes;
+        return superheroesMatch;
     }
 
 
