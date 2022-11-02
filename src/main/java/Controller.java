@@ -34,4 +34,12 @@ public class Controller {
     public void loadData() throws FileNotFoundException {
         fileHandler.loadData(database.getSuperheroes());
     }
+
+    public void deleteData() {
+        // delete i csv file
+    }
+
+    public void editData() {
+        // edit objekter i csv
+    }
 }
