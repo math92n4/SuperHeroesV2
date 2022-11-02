@@ -35,11 +35,4 @@ public class Controller {
         fileHandler.loadData(database.getSuperheroes());
     }
 
-    public void deleteData() {
-        // delete i csv file
-    }
-
-    public void editData() {
-        // edit objekter i csv
-    }
 }

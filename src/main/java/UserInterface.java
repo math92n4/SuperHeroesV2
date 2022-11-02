@@ -193,7 +193,7 @@ public class UserInterface {
 
 
         controller.editSuperhero(superheroIndex,superheroName,superPowers,realName,yearCreated,isHuman,strength);
-
+        controller.saveData();
     }
 
     private void deleteSuperhero() throws FileNotFoundException {
@@ -206,7 +206,7 @@ public class UserInterface {
         int index = s.nextInt();
 
         controller.deleteSuperhero(index);
-
+        controller.saveData();
     }
 
     private void exit() {
