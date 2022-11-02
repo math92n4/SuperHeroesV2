@@ -24,17 +24,20 @@ public class FileHandler {
             output.print(superhero.getStrength() + ";");
 
             output.println("");
-            output.close();
+
 
             //superheroes.add(superhero);
 
         }
+        output.close();
 
     }
 
     public void loadData(ArrayList<Superhero> superheroes) throws FileNotFoundException {
 
         Scanner scanList = new Scanner(new File("data/SuperheroData.csv"));
+
+        superheroes.clear();
 
         while (scanList.hasNextLine()) {
             String scan = scanList.nextLine();

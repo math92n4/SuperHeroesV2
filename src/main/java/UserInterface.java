@@ -9,15 +9,15 @@ public class UserInterface {
     Controller controller = new Controller();
     int menuChoice;
 
-    public void start() throws FileNotFoundException {
+    public void start(){
         System.out.println("------------------");
         System.out.println("SUPERHERO DATABASE");
-        controller.loadData();
     }
 
     public void choice() throws FileNotFoundException {
 
         do {
+            controller.loadData();
             System.out.println("------------------");
             System.out.println("1) Create superhero");
             System.out.println("2) Database overview");
@@ -40,6 +40,7 @@ public class UserInterface {
 
 
             switch (menuChoice) {
+
                 case 1:
                     createSuperhero();
                     break;
@@ -107,9 +108,10 @@ public class UserInterface {
 
 
         controller.createSuperhero(superheroName,superPowers,realName,yearCreated,isHuman,strength);
+        controller.saveData();
     }
 
-    private void superheroOverview() {
+    private void superheroOverview() throws FileNotFoundException {
         int index = 1;
         for (Superhero superhero : controller.superHeroOverview()) {
             System.out.println("--------------------");
@@ -138,7 +140,7 @@ public class UserInterface {
         }
     }
 
-    private void editSuperhero() {
+    private void editSuperhero() throws FileNotFoundException {
 
         superheroOverview();
 
@@ -192,10 +194,9 @@ public class UserInterface {
 
         controller.editSuperhero(superheroIndex,superheroName,superPowers,realName,yearCreated,isHuman,strength);
 
-
     }
 
-    private void deleteSuperhero() {
+    private void deleteSuperhero() throws FileNotFoundException {
 
         superheroOverview();
 

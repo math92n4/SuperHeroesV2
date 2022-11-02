@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Controller {
 
     private Database database = new Database();
+    private FileHandler fileHandler = new FileHandler();
 
     public void createSuperhero(String superheroName,String superPowers,String realName,int yearCreated,String isHuman,double strength) {
         database.createSuperhero(superheroName, superPowers, realName, yearCreated, isHuman, strength);
@@ -27,12 +28,10 @@ public class Controller {
     }
 
     public void saveData() throws FileNotFoundException {
-        FileHandler fileHandler = new FileHandler();
         fileHandler.saveData(database.getSuperheroes());
     }
 
     public void loadData() throws FileNotFoundException {
-        FileHandler fileHandler = new FileHandler();
         fileHandler.loadData(database.getSuperheroes());
     }
 }
