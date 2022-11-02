@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -8,13 +9,15 @@ public class UserInterface {
     Controller controller = new Controller();
     int menuChoice;
 
+    public void start() throws FileNotFoundException {
+        System.out.println("------------------");
+        System.out.println("SUPERHERO DATABASE");
+        controller.loadData();
+    }
 
-    public void choice() {
+    public void choice() throws FileNotFoundException {
 
         do {
-
-            System.out.println("------------------");
-            System.out.println("SUPERHERO DATABASE");
             System.out.println("------------------");
             System.out.println("1) Create superhero");
             System.out.println("2) Database overview");
@@ -59,8 +62,7 @@ public class UserInterface {
         } while (menuChoice != 9);
     }
 
-
-    private void createSuperhero() {
+    private void createSuperhero() throws FileNotFoundException {
         s.nextLine();                                       //scanner bug
         System.out.println("Name: ");
         String superheroName = s.nextLine();
@@ -72,7 +74,6 @@ public class UserInterface {
         String realName = s.nextLine();
 
         System.out.println("Year created: ");
-
         boolean validYear = false;
         int yearCreated = 0;
         while (!validYear) {
@@ -106,7 +107,6 @@ public class UserInterface {
 
 
         controller.createSuperhero(superheroName,superPowers,realName,yearCreated,isHuman,strength);
-
     }
 
     private void superheroOverview() {
@@ -121,6 +121,8 @@ public class UserInterface {
             System.out.println("Year created: " + superhero.getYearCreated());
             System.out.println("Is human? " + superhero.getIsHuman());
             System.out.println("Strength: " + superhero.getStrength());
+
+
         }
     }
 

@@ -17,6 +17,10 @@ public class Superhero {
         this.strength = strength;
     }
 
+    public Superhero() {
+
+    }
+
 
     public String getSuperheroName() {
         return superheroName;
