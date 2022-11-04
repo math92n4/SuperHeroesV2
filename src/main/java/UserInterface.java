@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -24,6 +25,7 @@ public class UserInterface {
             System.out.println("3) Search for a superhero");
             System.out.println("4) Edit superhero");
             System.out.println("5) Delete superhero");
+            System.out.println("6) Sort heroes by name");
             System.out.println("9) Exit");
 
             boolean validMenuInput = false;
@@ -41,24 +43,13 @@ public class UserInterface {
 
             switch (menuChoice) {
 
-                case 1:
-                    createSuperhero();
-                    break;
-                case 2:
-                    superheroOverview();
-                    break;
-                case 3:
-                    searchSuperhero();
-                    break;
-                case 4:
-                    editSuperhero();
-                    break;
-                case 5:
-                    deleteSuperhero();
-                    break;
-                case 9:
-                    exit();
-                    break;
+                case 1 -> createSuperhero();
+                case 2 -> superheroOverview();
+                case 3 -> searchSuperhero();
+                case 4 -> editSuperhero();
+                case 5 -> deleteSuperhero();
+                case 6 -> sortSuperheroNames();
+                case 9 -> exit();
             }
         } while (menuChoice != 9);
     }
@@ -207,6 +198,11 @@ public class UserInterface {
 
         controller.deleteSuperhero(index);
         controller.saveData();
+    }
+
+    private void sortSuperheroNames() throws FileNotFoundException {
+        Collections.sort(controller.superHeroOverview(), new HeroNameComparator());
+        superheroOverview();
     }
 
     private void exit() {

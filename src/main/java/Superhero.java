@@ -1,4 +1,4 @@
-public class Superhero {
+public class Superhero implements Comparable<Superhero>{
 
     private String superheroName;
     private String superPowers;
@@ -74,4 +74,8 @@ public class Superhero {
         return superheroName + ", " + superPowers + ", " + realName + ", " + isHuman + ", " + strength;
     }
 
+    @Override
+    public int compareTo(Superhero o) {
+        return 0;
+    }
 }
