@@ -8,14 +8,10 @@ public class FileHandler {
 
 
     public void saveData(ArrayList<Superhero> superheroes) throws FileNotFoundException {
-
         PrintStream output = new PrintStream(new File("data/SuperheroData.csv"));
 
-
         for (Superhero superhero : superheroes) {
-
             output.print("");
-
             output.print(superhero.getSuperheroName() + ";");
             output.print(superhero.getSuperPowers() + ";");
             output.print(superhero.getRealName() + ";");
@@ -24,7 +20,6 @@ public class FileHandler {
             output.print(superhero.getStrength() + ";");
 
             output.println("");
-
 
             //superheroes.add(superhero);
 

@@ -9,7 +9,7 @@ public class UserInterface {
     Controller controller = new Controller();
     int menuChoice;
 
-    public void start(){
+    public void start() {
         System.out.println("------------------");
         System.out.println("SUPERHERO DATABASE");
     }
@@ -107,7 +107,7 @@ public class UserInterface {
         }
 
 
-        controller.createSuperhero(superheroName,superPowers,realName,yearCreated,isHuman,strength);
+        controller.createSuperhero(superheroName, superPowers, realName, yearCreated, isHuman, strength);
         controller.saveData();
     }
 
@@ -136,7 +136,10 @@ public class UserInterface {
 
         System.out.println("These heroes were found:");
         for (Superhero superhero : superheroMatch) {
-            System.out.println(superhero.getSuperheroName());
+            System.out.println("Superhero name: " + superhero.getSuperheroName() + "\n" + "Super powers: "
+                    + superhero.getSuperPowers() + "\n" + "Real name: " + superhero.getRealName() + "\n"
+                    + ("Year created: " + superhero.getYearCreated() + "\n" +
+                    ("Is human? " + superhero.getIsHuman() + "\n" + ("Strength: " + superhero.getStrength()))));
         }
     }
 
@@ -192,7 +195,7 @@ public class UserInterface {
         }
 
 
-        controller.editSuperhero(superheroIndex,superheroName,superPowers,realName,yearCreated,isHuman,strength);
+        controller.editSuperhero(superheroIndex, superheroName, superPowers, realName, yearCreated, isHuman, strength);
         controller.saveData();
     }
 
@@ -213,7 +216,6 @@ public class UserInterface {
 
 
     }
-
 
 
 }
