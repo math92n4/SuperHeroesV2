@@ -21,8 +21,6 @@ public class FileHandler {
 
             output.println("");
 
-            //superheroes.add(superhero);
-
         }
         output.close();
 
