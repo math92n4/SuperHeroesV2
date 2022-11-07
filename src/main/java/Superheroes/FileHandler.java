@@ -1,3 +1,5 @@
+package Superheroes;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -17,7 +19,7 @@ public class FileHandler {
             output.print(superhero.getRealName() + ";");
             output.print(superhero.getYearCreated() + ";");
             output.print(superhero.getIsHuman() + ";");
-            output.print(superhero.getStrength() + ";");
+            output.print(superhero.getStrength());
 
             output.println("");
 

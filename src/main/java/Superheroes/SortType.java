@@ -1,3 +1,5 @@
+package Superheroes;
+
 public enum SortType {
     NAME,
     SUPERPOWER,

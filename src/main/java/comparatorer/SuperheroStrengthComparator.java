@@ -1,3 +1,7 @@
+package comparatorer;
+
+import Superheroes.Superhero;
+
 import java.util.Comparator;
 
 public class SuperheroStrengthComparator implements Comparator<Superhero> {

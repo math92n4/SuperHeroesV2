@@ -1,3 +1,5 @@
+package Superheroes;
+
 public class Superhero {
 
     private String superheroName;
@@ -20,7 +22,6 @@ public class Superhero {
     public Superhero() {
 
     }
-
 
     public String getSuperheroName() {
         return superheroName;

@@ -1,4 +1,7 @@
-import java.io.File;
+package Superheroes;
+
+import comparatorer.*;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,12 +24,12 @@ public class Controller {
         var sortType = sorting.getSortType();
         Comparator<Superhero> comparator = null;
         switch (sortType) {
-            case NAME -> comparator = new SuperheroNameComparator();
-            case SUPERPOWER -> comparator = new SuperheroSuperPowerComparator();
-            case REALNAME -> comparator = new SuperheroRealNameComparator();
-            case YEARCREATED -> comparator = new SuperheroYearCreatedComparator();
-            case ISHUMAN -> comparator = new SuperheroIsHumanComparator();
-            case STRENGTH -> comparator = new SuperheroStrengthComparator();
+            case NAME -> comparator = (Comparator<Superhero>) new SuperheroNameComparator();
+            case SUPERPOWER -> comparator = (Comparator<Superhero>) new SuperheroSuperPowerComparator();
+            case REALNAME -> comparator = (Comparator<Superhero>) new SuperheroRealNameComparator();
+            case YEARCREATED -> comparator = (Comparator<Superhero>) new SuperheroYearCreatedComparator();
+            case ISHUMAN -> comparator = (Comparator<Superhero>) new SuperheroIsHumanComparator();
+            case STRENGTH -> comparator = (Comparator<Superhero>) new SuperheroStrengthComparator();
         }
         if (comparator != null) {
             database.getSuperheroes().sort(comparator);
@@ -50,7 +53,10 @@ public class Controller {
     }
 
     public void saveData() throws FileNotFoundException {
-        fileHandler.saveData(database.getSuperheroes());
+        if (database.getChangeMade()) {
+            fileHandler.saveData(database.getSuperheroes());
+            database.changeNotMade();
+        }
     }
 
     public void loadData() throws FileNotFoundException {

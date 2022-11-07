@@ -1,11 +1,14 @@
+package Superheroes;
+
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInterface {
 
-    Scanner s = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
     Controller controller = new Controller();
     int menuChoice;
     int index = 1;
@@ -32,11 +35,11 @@ public class UserInterface {
             int menuChoice = 0;
             while (!validMenuInput) {
                 try {
-                    menuChoice = s.nextInt();
+                    menuChoice = scanner.nextInt();
                     validMenuInput = true;
                 } catch (InputMismatchException e) {
                     System.out.println("Wrong input, try a number!");
-                    s.nextLine();
+                    scanner.nextLine();
                 }
             }
 
@@ -57,7 +60,7 @@ public class UserInterface {
                     break;
                 case 5:
                     deleteSuperhero();
-                case 6 :
+                case 6:
                     sortedSuperheroOverview();
                     break;
                 case 9:
@@ -68,33 +71,33 @@ public class UserInterface {
     }
 
     private void createSuperhero() throws FileNotFoundException {
-        s.nextLine();                                       //scanner bug
+        scanner.nextLine();                                       //scanner bug
         System.out.println("Name: ");
-        String superheroName = s.nextLine();
+        String superheroName = scanner.nextLine();
 
         System.out.println("Superpower(s): ");
-        String superPowers = s.nextLine();
+        String superPowers = scanner.nextLine();
 
         System.out.println("Real name: ");
-        String realName = s.nextLine();
+        String realName = scanner.nextLine();
 
         System.out.println("Year created: ");
         boolean validYear = false;
         int yearCreated = 0;
         while (!validYear) {
             try {
-                yearCreated = s.nextInt();
+                yearCreated = scanner.nextInt();
                 validYear = true;
             } catch (InputMismatchException e) {
                 System.out.println("Wrong input, try a number");
-                s.nextLine();
+                scanner.nextLine();
             }
         }
 
-        s.nextLine();                                       //scanner bug
+        scanner.nextLine();                                       //scanner bug
 
         System.out.println("Is your hero a human?");
-        String isHuman = s.nextLine();
+        String isHuman = scanner.nextLine();
 
 
         System.out.println("Strength (in numbers): ");
@@ -102,11 +105,11 @@ public class UserInterface {
         double strength = 0;
         while (!validStrength) {
             try {
-                strength = s.nextDouble();
+                strength = scanner.nextDouble();
                 validStrength = true;
             } catch (InputMismatchException e) {
                 System.out.println("Wrong input, try a number");
-                s.nextLine();
+                scanner.nextLine();
             }
         }
 
@@ -131,7 +134,7 @@ public class UserInterface {
     private void searchSuperhero() {
         ArrayList<Superhero> superheroMatch;
         System.out.println("Search: ");
-        String superheroName = s.next();
+        String superheroName = scanner.next();
         superheroMatch = controller.searchSuperhero(superheroName);
 
 
@@ -151,52 +154,79 @@ public class UserInterface {
         System.out.println("--------------------");
         System.out.println("Which hero do you wish to edit?");
 
-        int superheroIndex = s.nextInt();
-        s.nextLine();                                       //scanner bug
+        int superheroIndex = 0;
+        boolean valid = false;
+        while (!valid) {
+            try {
+                superheroIndex = scanner.nextInt(); //scanner bug}
+                valid = true;
+            } catch (InputMismatchException IME) {
+                System.out.println("Please input the hero's # number...");
+                scanner.nextLine();
+            }
+        }
+        scanner.nextLine(); //scannerbug
 
         System.out.println("Name: ");
-        String superheroName = s.nextLine();
+        String superheroName = scanner.nextLine();
 
         System.out.println("Superpower(s): ");
-        String superPowers = s.nextLine();
+        String superPowers = scanner.nextLine();
 
         System.out.println("Real name: ");
-        String realName = s.nextLine();
+        String realName = scanner.nextLine();
 
         System.out.println("Year created: ");
-        boolean validYear = false;
+        String yearCreated = null;
+        int createdYearParsed = 0;
+        try {
+            yearCreated = scanner.nextLine();
+            createdYearParsed = Integer.parseInt(yearCreated);
+        } catch (NumberFormatException e) {
+            System.out.println("Write a number: ");
+        }
+
+        /*boolean validYear = false;
         int yearCreated = 0;
         while (!validYear) {
             try {
-                yearCreated = s.nextInt();
+                yearCreated = scanner.nextInt();
                 validYear = true;
             } catch (InputMismatchException e) {
                 System.out.println("Wrong input, try a number");
-                s.nextLine();
+                scanner.nextLine();
             }
-        }
-
-        s.nextLine();                                       //scanner bug
+        }*/
+        scanner.nextLine();                                       //scanner bug
 
         System.out.println("Is your hero a human?");
-        String isHuman = s.nextLine();
-
+        String isHuman = scanner.nextLine();
 
         System.out.println("Strength (in numbers): ");
-        boolean validStrength = false;
+        String strength;
+        int strengthParsed = 0;
+        try {
+            strength = scanner.nextLine();
+            strengthParsed = Integer.parseInt(strength);
+        } catch (NumberFormatException e) {
+            System.out.println("Write a number: ");
+        }
+
+        /*boolean validStrength = false;
         double strength = 0;
         while (!validStrength) {
             try {
-                strength = s.nextDouble();
+                strength = scanner.nextDouble();
                 validStrength = true;
             } catch (InputMismatchException e) {
                 System.out.println("Wrong input, try a number");
-                s.nextLine();
+                scanner.nextLine();
             }
-        }
+        }*/
 
 
-        controller.editSuperhero(superheroIndex, superheroName, superPowers, realName, yearCreated, isHuman, strength);
+        controller.editSuperhero(superheroIndex, superheroName, superPowers, realName,
+                createdYearParsed, isHuman, strengthParsed);
         controller.saveData();
     }
 
@@ -205,12 +235,16 @@ public class UserInterface {
         superheroOverview();
 
         System.out.println("--------------------");
-        System.out.println("Which hero do you wish to delete?");
+        System.out.println("Which hero do you wish to delete?"
+                + "\n" + "     (TYPE IN HERO NUMBER) ");
 
-        int index = s.nextInt();
-
-        controller.deleteSuperhero(index);
-        controller.saveData();
+        try {
+            int index = scanner.nextInt();
+            controller.deleteSuperhero(index);
+            controller.saveData();
+        } catch (NullPointerException e) {
+            System.out.println("Remember to type in the heroes number # ");
+        }
     }
 
     private void sortedSuperheroOverview() {
@@ -226,7 +260,7 @@ public class UserInterface {
         System.out.println("5) Is human");
         System.out.println("6) Strength");
 
-        choice = s.nextInt();
+        choice = scanner.nextInt();
 
         if (choice == 1) {
             superheroSorter = new SuperheroSorting(true, SortType.NAME);
@@ -254,7 +288,6 @@ public class UserInterface {
                     + superhero.getSuperPowers() + "\n" + "Real name: " + superhero.getRealName() + "\n"
                     + ("Year created: " + superhero.getYearCreated() + "\n" +
                     ("Is human? " + superhero.getIsHuman() + "\n" + ("Strength: " + superhero.getStrength()))));
-
 
         }
 

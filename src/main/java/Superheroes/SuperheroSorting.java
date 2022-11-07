@@ -1,3 +1,5 @@
+package Superheroes;
+
 public class SuperheroSorting {
 
     private boolean ascending;
