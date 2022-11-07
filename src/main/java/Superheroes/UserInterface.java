@@ -263,22 +263,22 @@ public class UserInterface {
         choice = scanner.nextInt();
 
         if (choice == 1) {
-            superheroSorter = new SuperheroSorting(true, SortType.NAME);
+            superheroSorter = SuperheroSorting.nameSort(true);
             System.out.println("Sorting superhero name");
         } else if (choice == 2) {
-            superheroSorter = new SuperheroSorting(true, SortType.SUPERPOWER);
+            superheroSorter = SuperheroSorting.superPowerSort(true);
             System.out.println("Sorting super power");
         } else if (choice == 3) {
-            superheroSorter = new SuperheroSorting(true, SortType.REALNAME);
+            superheroSorter = SuperheroSorting.realNameSort(true);
             System.out.println("Sorting real name");
         } else if (choice == 4) {
-            superheroSorter = new SuperheroSorting(false, SortType.YEARCREATED);
+            superheroSorter = SuperheroSorting.yearCreatedSort(false);
             System.out.println("Sorting year of creation");
         } else if (choice == 5) {
-            superheroSorter = new SuperheroSorting(true, SortType.ISHUMAN);
+            superheroSorter = SuperheroSorting.isHumanSort(true);
             System.out.println("Sorting is human");
         } else if (choice == 6) {
-            superheroSorter = new SuperheroSorting(false, SortType.STRENGTH);
+            superheroSorter = SuperheroSorting.strengthSort(false);
             System.out.println("Sorting strength");
         }
 

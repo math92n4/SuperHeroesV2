@@ -21,22 +21,7 @@ public class Controller {
     }
 
     public ArrayList<Superhero> sortedSuperHeroOverview(SuperheroSorting sorting) {
-        var sortType = sorting.getSortType();
-        Comparator<Superhero> comparator = null;
-        switch (sortType) {
-            case NAME -> comparator = (Comparator<Superhero>) new SuperheroNameComparator();
-            case SUPERPOWER -> comparator = (Comparator<Superhero>) new SuperheroSuperPowerComparator();
-            case REALNAME -> comparator = (Comparator<Superhero>) new SuperheroRealNameComparator();
-            case YEARCREATED -> comparator = (Comparator<Superhero>) new SuperheroYearCreatedComparator();
-            case ISHUMAN -> comparator = (Comparator<Superhero>) new SuperheroIsHumanComparator();
-            case STRENGTH -> comparator = (Comparator<Superhero>) new SuperheroStrengthComparator();
-        }
-        if (comparator != null) {
-            database.getSuperheroes().sort(comparator);
-            if(!sorting.isAscending()) {
-                Collections.reverse(database.getSuperheroes());
-            }
-        }
+        sorting.sort(database.getSuperheroes());
         return database.getSuperheroes();
     }
 
