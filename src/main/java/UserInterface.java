@@ -8,6 +8,7 @@ public class UserInterface {
     Scanner s = new Scanner(System.in);
     Controller controller = new Controller();
     int menuChoice;
+    int index = 1;
 
     public void start() {
         System.out.println("------------------");
@@ -117,15 +118,11 @@ public class UserInterface {
     private void superheroOverview() throws FileNotFoundException {
         int index = 1;
         for (Superhero superhero : controller.superHeroOverview()) {
-            System.out.println("--------------------");
-            System.out.println("SUPERHERO #" + index++);
-            System.out.println("--------------------");
-            System.out.println("Superhero name: " + superhero.getSuperheroName());
-            System.out.println("Super powers: " + superhero.getSuperPowers());
-            System.out.println("Real name: " + superhero.getRealName());
-            System.out.println("Year created: " + superhero.getYearCreated());
-            System.out.println("Is human? " + superhero.getIsHuman());
-            System.out.println("Strength: " + superhero.getStrength());
+            System.out.println("--------------------" + "\n" + "SUPERHERO #" + index++ + "\n" + "--------------------"
+                    + "\n" + "Superhero name: " + superhero.getSuperheroName() + "\n" + "Super powers: "
+                    + superhero.getSuperPowers() + "\n" + "Real name: " + superhero.getRealName() + "\n"
+                    + ("Year created: " + superhero.getYearCreated() + "\n" +
+                    ("Is human? " + superhero.getIsHuman() + "\n" + ("Strength: " + superhero.getStrength()))));
 
 
         }
@@ -139,7 +136,8 @@ public class UserInterface {
 
 
         for (Superhero superhero : superheroMatch) {
-            System.out.println("Superhero name: " + superhero.getSuperheroName() + "\n" + "Super powers: "
+            System.out.println("--------------------" + "\n" + "SUPERHERO #" + index++ + "\n" + "--------------------"
+                    + "\n" + "Superhero name: " + superhero.getSuperheroName() + "\n" + "Super powers: "
                     + superhero.getSuperPowers() + "\n" + "Real name: " + superhero.getRealName() + "\n"
                     + ("Year created: " + superhero.getYearCreated() + "\n" +
                     ("Is human? " + superhero.getIsHuman() + "\n" + ("Strength: " + superhero.getStrength()))));
@@ -218,7 +216,7 @@ public class UserInterface {
     private void sortedSuperheroOverview() {
         int index = 1;
         int choice;
-        SuperheroSorting superheroSorter;
+        SuperheroSorting superheroSorter = null;
 
         System.out.println("Please select an attribute by number");
         System.out.println("1) Superhero name");
@@ -229,99 +227,37 @@ public class UserInterface {
         System.out.println("6) Strength");
 
         choice = s.nextInt();
-        
-        switch (choice) {
-            case 1:
-                superheroSorter = new SuperheroSorting(true, SortType.NAME);
-                for (Superhero superhero : controller.sortedSuperHeroOverview(superheroSorter)) {
-                    System.out.println("--------------------");
-                    System.out.println("SUPERHERO #" + index++);
-                    System.out.println("--------------------");
-                    System.out.println("Superhero name: " + superhero.getSuperheroName());
-                    System.out.println("Super powers: " + superhero.getSuperPowers());
-                    System.out.println("Real name: " + superhero.getRealName());
-                    System.out.println("Year created: " + superhero.getYearCreated());
-                    System.out.println("Is human? " + superhero.getIsHuman());
-                    System.out.println("Strength: " + superhero.getStrength());
-                }
-                break;
-            case 2:
-                superheroSorter = new SuperheroSorting(true, SortType.SUPERPOWER);
-                for (Superhero superhero : controller.sortedSuperHeroOverview(superheroSorter)) {
-                    System.out.println("--------------------");
-                    System.out.println("SUPERHERO #" + index++);
-                    System.out.println("--------------------");
-                    System.out.println("Superhero name: " + superhero.getSuperheroName());
-                    System.out.println("Super powers: " + superhero.getSuperPowers());
-                    System.out.println("Real name: " + superhero.getRealName());
-                    System.out.println("Year created: " + superhero.getYearCreated());
-                    System.out.println("Is human? " + superhero.getIsHuman());
-                    System.out.println("Strength: " + superhero.getStrength());
-                }
-                break;
-            case 3:
-                superheroSorter = new SuperheroSorting(true, SortType.REALNAME);
-                for (Superhero superhero : controller.sortedSuperHeroOverview(superheroSorter)) {
-                    System.out.println("--------------------");
-                    System.out.println("SUPERHERO #" + index++);
-                    System.out.println("--------------------");
-                    System.out.println("Superhero name: " + superhero.getSuperheroName());
-                    System.out.println("Super powers: " + superhero.getSuperPowers());
-                    System.out.println("Real name: " + superhero.getRealName());
-                    System.out.println("Year created: " + superhero.getYearCreated());
-                    System.out.println("Is human? " + superhero.getIsHuman());
-                    System.out.println("Strength: " + superhero.getStrength());
-                }
-                break;
-            case 4:
-                superheroSorter = new SuperheroSorting(false, SortType.YEARCREATED);
-                for (Superhero superhero : controller.sortedSuperHeroOverview(superheroSorter)) {
-                    System.out.println("--------------------");
-                    System.out.println("SUPERHERO #" + index++);
-                    System.out.println("--------------------");
-                    System.out.println("Superhero name: " + superhero.getSuperheroName());
-                    System.out.println("Super powers: " + superhero.getSuperPowers());
-                    System.out.println("Real name: " + superhero.getRealName());
-                    System.out.println("Year created: " + superhero.getYearCreated());
-                    System.out.println("Is human? " + superhero.getIsHuman());
-                    System.out.println("Strength: " + superhero.getStrength());
-                }
-                break;
-            case 5:
-                superheroSorter = new SuperheroSorting(true, SortType.ISHUMAN);
-                for (Superhero superhero : controller.sortedSuperHeroOverview(superheroSorter)) {
-                    System.out.println("--------------------");
-                    System.out.println("SUPERHERO #" + index++);
-                    System.out.println("--------------------");
-                    System.out.println("Superhero name: " + superhero.getSuperheroName());
-                    System.out.println("Super powers: " + superhero.getSuperPowers());
-                    System.out.println("Real name: " + superhero.getRealName());
-                    System.out.println("Year created: " + superhero.getYearCreated());
-                    System.out.println("Is human? " + superhero.getIsHuman());
-                    System.out.println("Strength: " + superhero.getStrength());
-                }
-                break;
-            case 6:
-                superheroSorter = new SuperheroSorting(false, SortType.STRENGTH);
-                for (Superhero superhero : controller.sortedSuperHeroOverview(superheroSorter)) {
-                    System.out.println("--------------------");
-                    System.out.println("SUPERHERO #" + index++);
-                    System.out.println("--------------------");
-                    System.out.println("Superhero name: " + superhero.getSuperheroName());
-                    System.out.println("Super powers: " + superhero.getSuperPowers());
-                    System.out.println("Real name: " + superhero.getRealName());
-                    System.out.println("Year created: " + superhero.getYearCreated());
-                    System.out.println("Is human? " + superhero.getIsHuman());
-                    System.out.println("Strength: " + superhero.getStrength());
-                }
-                break;
+
+        if (choice == 1) {
+            superheroSorter = new SuperheroSorting(true, SortType.NAME);
+            System.out.println("Sorting superhero name");
+        } else if (choice == 2) {
+            superheroSorter = new SuperheroSorting(true, SortType.SUPERPOWER);
+            System.out.println("Sorting super power");
+        } else if (choice == 3) {
+            superheroSorter = new SuperheroSorting(true, SortType.REALNAME);
+            System.out.println("Sorting real name");
+        } else if (choice == 4) {
+            superheroSorter = new SuperheroSorting(false, SortType.YEARCREATED);
+            System.out.println("Sorting year of creation");
+        } else if (choice == 5) {
+            superheroSorter = new SuperheroSorting(true, SortType.ISHUMAN);
+            System.out.println("Sorting is human");
+        } else if (choice == 6) {
+            superheroSorter = new SuperheroSorting(false, SortType.STRENGTH);
+            System.out.println("Sorting strength");
+        }
+
+        for (Superhero superhero : controller.sortedSuperHeroOverview(superheroSorter)) {
+            System.out.println("--------------------" + "\n" + "SUPERHERO #" + index++ + "\n" + "--------------------"
+                    + "\n" + "Superhero name: " + superhero.getSuperheroName() + "\n" + "Super powers: "
+                    + superhero.getSuperPowers() + "\n" + "Real name: " + superhero.getRealName() + "\n"
+                    + ("Year created: " + superhero.getYearCreated() + "\n" +
+                    ("Is human? " + superhero.getIsHuman() + "\n" + ("Strength: " + superhero.getStrength()))));
+
 
         }
-        
-        
-        
 
-        
     }
 
     private void exit() {
