@@ -1,8 +1,12 @@
 package Superheroes;
 
+import comparatorer.*;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -10,6 +14,7 @@ public class UserInterface {
 
     Scanner scanner = new Scanner(System.in);
     Controller controller = new Controller();
+    FileHandler filehandler = new FileHandler();
     int menuChoice;
     int index = 1;
 
@@ -29,6 +34,7 @@ public class UserInterface {
             System.out.println("4) Edit superhero");
             System.out.println("5) Delete superhero");
             System.out.println("6) Sorted lists");
+            System.out.println("7) Sorted lists by primary and secondary attribute");
             System.out.println("9) Exit");
 
             boolean validMenuInput = false;
@@ -62,6 +68,9 @@ public class UserInterface {
                     deleteSuperhero();
                 case 6:
                     sortedSuperheroOverview();
+                    break;
+                case 7:
+                    sortedPrimaryAndSecondary();
                     break;
                 case 9:
                     exit();
@@ -280,6 +289,7 @@ public class UserInterface {
         } else if (choice == 6) {
             superheroSorter = SuperheroSorting.strengthSort(false);
             System.out.println("Sorting strength");
+
         }
 
         for (Superhero superhero : controller.sortedSuperHeroOverview(superheroSorter)) {
@@ -289,6 +299,310 @@ public class UserInterface {
                     + ("Year created: " + superhero.getYearCreated() + "\n" +
                     ("Is human? " + superhero.getIsHuman() + "\n" + ("Strength: " + superhero.getStrength()))));
 
+        }
+
+    }
+
+    private void sortedPrimaryAndSecondary() {
+        System.out.println("Please select the primary attribute you want sorted by number");
+        System.out.println("1) Superhero name ");
+        System.out.println("2) Superpower ");
+        System.out.println("3) Real name ");
+        System.out.println("4) Year created ");
+        System.out.println("5) Is human ");
+        System.out.println("6) Strength ");
+
+        // Scanner secondChoice = new Scanner(System.in);
+        int choice = 0;
+        choice = scanner.nextInt();
+
+        if (choice == 1) {
+            System.out.println("Select the secondary attribute you want to sort the list by: " + "\n" +
+                    "2) Super power: " + "\n" +
+                    "3) Real name: " + "\n" +
+                    "4) Year created: " + "\n" +
+                    "5) Is human: " + "\n" +
+                    "6) Strength: ");
+
+            int secondaryChoice = 0;
+            secondaryChoice = scanner.nextInt();
+
+            if (secondaryChoice == 2) {
+                Collections.sort(controller.superHeroOverview(), new SuperheroNameComparator().
+                        thenComparing(new SuperheroSuperPowerComparator()));
+                System.out.println("Primary: Superhero name, " +
+                        "Secondary: Superpower: ");
+                System.out.println(controller.superHeroOverview());
+            }
+            if (secondaryChoice == 3) {
+                System.out.println("Primary: Superhero name, " +
+                        "Secondary: Real name: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroNameComparator().
+                        thenComparing(new SuperheroRealNameComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (secondaryChoice == 4) {
+                System.out.println("Primary: Superhero name, " +
+                        "Secondary: Year created: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroNameComparator().
+                        thenComparing(new SuperheroYearCreatedComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (secondaryChoice == 5) {
+                System.out.println("Primary: Superhero name, " +
+                        "Secondary: Is human?: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroNameComparator().
+                        thenComparing(new SuperheroIsHumanComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (secondaryChoice == 6) {
+                System.out.println("Primary: Superhero name, " +
+                        "Secondary: Strength: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroNameComparator().
+                        thenComparing(new SuperheroStrengthComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+        }
+        if (choice == 2) {
+            System.out.println("Select the secondary attribute you want to sort the list by: " +
+                    "Please select a number " + "\n" +
+                    "2) Superhero name: " + "\n" +
+                    "3) Real name: " + "\n" +
+                    "4) Year created: " + "\n" +
+                    "5) Is human: " + "\n" +
+                    "6) Strength: ");
+
+            int secondaryChoice = 0;
+            secondaryChoice = scanner.nextInt();
+
+
+            if (secondaryChoice == 2) {
+                System.out.println("Primary: Superpower: " +
+                        "Secondary: Superhero name: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroSuperPowerComparator().
+                        thenComparing(new SuperheroNameComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (secondaryChoice == 3) {
+                System.out.println("Primary: Superpower: " +
+                        "Secondary: Real name: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroSuperPowerComparator().
+                        thenComparing(new SuperheroRealNameComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (secondaryChoice == 4) {
+                System.out.println("Primary: Superpower: " +
+                        "Secondary: Year created: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroSuperPowerComparator().
+                        thenComparing(new SuperheroYearCreatedComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (secondaryChoice == 5) {
+                System.out.println("Primary: Superpower: " +
+                        "Secondary: Is human?: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroSuperPowerComparator().
+                        thenComparing(new SuperheroIsHumanComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (secondaryChoice == 6) {
+                System.out.println("Primary: Superpower: " +
+                        "Secondary: Strength: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroSuperPowerComparator().
+                        thenComparing(new SuperheroStrengthComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+        }
+        if (choice == 3) {
+            System.out.println("Select the secondary attribute you want to sort the list by: " +
+                    " please select a number " + "\n" +
+                    "2) Superhero name: " + "\n" +
+                    "3) Superpower: " + "\n" +
+                    "4) Year created: " + "\n" +
+                    "5) Is human: " + "\n" +
+                    "6) Strength: ");
+
+            int secondaryChoice = 0;
+            secondaryChoice = scanner.nextInt();
+
+            if (choice == 2) {
+                System.out.println("Primary: Real name: " +
+                        "Secondary: Superhero name: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroRealNameComparator().
+                        thenComparing(new SuperheroNameComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 3) {
+                System.out.println("Primary: Real name: " +
+                        "Secondary: Superpower: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroRealNameComparator().
+                        thenComparing(new SuperheroSuperPowerComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 4) {
+                System.out.println("Primary: Real name: " +
+                        "Secondary: Year created: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroRealNameComparator().
+                        thenComparing(new SuperheroYearCreatedComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 5) {
+                System.out.println("Primary: Real name: " +
+                        "Secondary: Is human?: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroRealNameComparator().
+                        thenComparing(new SuperheroIsHumanComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 6) {
+                System.out.println("Primary: Real name: " +
+                        "Secondary: Strength: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroRealNameComparator().
+                        thenComparing(new SuperheroStrengthComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+        }
+        if (choice == 4) {
+            System.out.println("Select the secondary attribute you want to sort the list by: " +
+                    " please select a number " + "\n" +
+                    "2) Superhero name: " + "\n" +
+                    "3) Superpower: " + "\n" +
+                    "4) Real name: " + "\n" +
+                    "5) Is human: " + "\n" +
+                    "6) Strength: ");
+
+            int secondaryChoice = 0;
+            secondaryChoice = scanner.nextInt();
+
+            if (choice == 2) {
+                System.out.println("Primary: Year created: " +
+                        "Secondary: Superhero name: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroYearCreatedComparator().
+                        thenComparing(new SuperheroNameComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 3) {
+                System.out.println("Primary: Year created: " +
+                        "Secondary: Superpower: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroYearCreatedComparator().
+                        thenComparing(new SuperheroSuperPowerComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 4) {
+                System.out.println("Primary: Year created: " +
+                        "Secondary: Real name: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroYearCreatedComparator().
+                        thenComparing(new SuperheroRealNameComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 5) {
+                System.out.println("Primary: Year created: " +
+                        "Secondary: Is human?: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroYearCreatedComparator().
+                        thenComparing(new SuperheroIsHumanComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 6) {
+                System.out.println("Primary: Year created: " +
+                        "Secondary: Strength: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroYearCreatedComparator().
+                        thenComparing(new SuperheroStrengthComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+        }
+        if (choice == 5) {
+            System.out.println("Select the secondary attribute you want to sort the list by: " +
+                    " please select a number " + "\n" +
+                    "2) Superhero name: " + "\n" +
+                    "3) Superpower: " + "\n" +
+                    "4) Real name: " + "\n" +
+                    "5) Year created: " + "\n" +
+                    "6) Strength: ");
+
+            int secondaryChoice = 0;
+            secondaryChoice = scanner.nextInt();
+
+            if (choice == 2) {
+                System.out.println("Primary: Is human?: " +
+                        "Secondary: Superhero name: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroIsHumanComparator().
+                        thenComparing(new SuperheroNameComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 3) {
+                System.out.println("Primary: Is human?: " +
+                        "Secondary: Superpower: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroIsHumanComparator().
+                        thenComparing(new SuperheroSuperPowerComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 4) {
+                System.out.println("Primary: Is human?: " +
+                        "Secondary: Real name: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroIsHumanComparator().
+                        thenComparing(new SuperheroRealNameComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 5) {
+                System.out.println("Primary: Is human?: " +
+                        "Secondary: Year created: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroIsHumanComparator().
+                        thenComparing(new SuperheroYearCreatedComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 6) {
+                System.out.println("Primary: Is human?: " +
+                        "Secondary: Strength: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroIsHumanComparator().
+                        thenComparing(new SuperheroStrengthComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+        }
+        if (choice == 6) {
+            System.out.println("Select the secondary attribute you want to sort the list by: " +
+                    " please select a number " + "\n" +
+                    "2) Superhero name: " + "\n" +
+                    "3) Superpower: " + "\n" +
+                    "4) Real name: " + "\n" +
+                    "5) Year created: " + "\n" +
+                    "6) Is human: ");
+
+            int secondaryChoice = 0;
+            secondaryChoice = scanner.nextInt();
+
+            if (choice == 2) {
+                System.out.println("Primary: Strength: " +
+                        "Secondary: Superhero name: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroStrengthComparator().
+                        thenComparing(new SuperheroNameComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 3) {
+                System.out.println("Primary: Strength: " +
+                        "Secondary: Superpower: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroStrengthComparator().
+                        thenComparing(new SuperheroSuperPowerComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 4) {
+                System.out.println("Primary: Strength: " +
+                        "Secondary: Real name: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroStrengthComparator().
+                        thenComparing(new SuperheroRealNameComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 5) {
+                System.out.println("Primary: Strength: " +
+                        "Secondary: Year created: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroStrengthComparator().
+                        thenComparing(new SuperheroYearCreatedComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
+            if (choice == 6) {
+                System.out.println("Primary: Strength: " +
+                        "Secondary: Is human?: ");
+                Collections.sort(controller.superHeroOverview(), new SuperheroStrengthComparator().
+                        thenComparing(new SuperheroIsHumanComparator()));
+                System.out.println(controller.superHeroOverview());
+            }
         }
 
     }
