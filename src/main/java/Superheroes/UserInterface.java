@@ -301,7 +301,7 @@ public class UserInterface {
 
     }
 
-    private void sortedPrimaryAndSecondary() {
+    private void sortedPrimaryAndSecondary() throws FileNotFoundException {
         System.out.println("Please select the primary attribute you want sorted by number");
         System.out.println("1) Superhero name ");
         System.out.println("2) Superpower ");
@@ -329,35 +329,35 @@ public class UserInterface {
                         thenComparing(new SuperheroSuperPowerComparator()));
                 System.out.println("Primary: Superhero name " + "\n" +
                         "Secondary: Superpower ");
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
             if (secondaryChoice == 3) {
                 System.out.println("Primary: Superhero name " + "\n" +
                         "Secondary: Real name");
                 Collections.sort(controller.superHeroOverview(), new SuperheroNameComparator().
                         thenComparing(new SuperheroRealNameComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
             if (secondaryChoice == 4) {
                 System.out.println("Primary: Superhero name, " + "\n" +
                         "Secondary: Year created: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroNameComparator().
                         thenComparing(new SuperheroYearCreatedComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
             if (secondaryChoice == 5) {
                 System.out.println("Primary: Superhero name, " + "\n" +
                         "Secondary: Is human?: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroNameComparator().
                         thenComparing(new SuperheroIsHumanComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
             if (secondaryChoice == 6) {
                 System.out.println("Primary: Superhero name, " + "\n" +
                         "Secondary: Strength: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroNameComparator().
                         thenComparing(new SuperheroStrengthComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
         }
         if (choice == 2) {
@@ -378,35 +378,35 @@ public class UserInterface {
                         "Secondary: Superhero name: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroSuperPowerComparator().
                         thenComparing(new SuperheroNameComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
             if (secondaryChoice == 3) {
                 System.out.println("Primary: Superpower: " + "\n" +
                         "Secondary: Real name: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroSuperPowerComparator().
                         thenComparing(new SuperheroRealNameComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
             if (secondaryChoice == 4) {
                 System.out.println("Primary: Superpower: " + "\n" +
                         "Secondary: Year created: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroSuperPowerComparator().
                         thenComparing(new SuperheroYearCreatedComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
             if (secondaryChoice == 5) {
                 System.out.println("Primary: Superpower: " + "\n" +
                         "Secondary: Is human?: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroSuperPowerComparator().
                         thenComparing(new SuperheroIsHumanComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
             if (secondaryChoice == 6) {
                 System.out.println("Primary: Superpower: " + "\n" +
                         "Secondary: Strength: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroSuperPowerComparator().
                         thenComparing(new SuperheroStrengthComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
         }
         if (choice == 3) {
@@ -421,40 +421,40 @@ public class UserInterface {
             int secondaryChoice = 0;
             secondaryChoice = scanner.nextInt();
 
-            if (choice == 2) {
+            if (secondaryChoice == 2) {
                 System.out.println("Primary: Real name, " + "\n" +
                         "Secondary: Superhero name: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroRealNameComparator().
                         thenComparing(new SuperheroNameComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 3) {
+            if (secondaryChoice == 3) {
                 System.out.println("Primary: Real name, " + "\n" +
                         "Secondary: Superpower: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroRealNameComparator().
                         thenComparing(new SuperheroSuperPowerComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 4) {
+            if (secondaryChoice == 4) {
                 System.out.println("Primary: Real name, " + "\n" +
                         "Secondary: Year created: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroRealNameComparator().
                         thenComparing(new SuperheroYearCreatedComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 5) {
+            if (secondaryChoice == 5) {
                 System.out.println("Primary: Real name, " + "\n" +
                         "Secondary: Is human?: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroRealNameComparator().
                         thenComparing(new SuperheroIsHumanComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 6) {
+            if (secondaryChoice == 6) {
                 System.out.println("Primary: Real name, " + "\n" +
                         "Secondary: Strength: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroRealNameComparator().
                         thenComparing(new SuperheroStrengthComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
         }
         if (choice == 4) {
@@ -469,40 +469,40 @@ public class UserInterface {
             int secondaryChoice = 0;
             secondaryChoice = scanner.nextInt();
 
-            if (choice == 2) {
+            if (secondaryChoice == 2) {
                 System.out.println("Primary: Year created, " + "\n" +
                         "Secondary: Superhero name: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroYearCreatedComparator().
                         thenComparing(new SuperheroNameComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 3) {
+            if (secondaryChoice == 3) {
                 System.out.println("Primary: Year created, " + "\n" +
                         "Secondary: Superpower: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroYearCreatedComparator().
                         thenComparing(new SuperheroSuperPowerComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 4) {
+            if (secondaryChoice == 4) {
                 System.out.println("Primary: Year created, " + "\n" +
                         "Secondary: Real name: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroYearCreatedComparator().
                         thenComparing(new SuperheroRealNameComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 5) {
+            if (secondaryChoice == 5) {
                 System.out.println("Primary: Year created, " + "\n" +
                         "Secondary: Is human?: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroYearCreatedComparator().
                         thenComparing(new SuperheroIsHumanComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 6) {
+            if (secondaryChoice == 6) {
                 System.out.println("Primary: Year created, " + "\n" +
                         "Secondary: Strength: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroYearCreatedComparator().
                         thenComparing(new SuperheroStrengthComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
         }
         if (choice == 5) {
@@ -517,40 +517,40 @@ public class UserInterface {
             int secondaryChoice = 0;
             secondaryChoice = scanner.nextInt();
 
-            if (choice == 2) {
+            if (secondaryChoice == 2) {
                 System.out.println("Primary: Is human?, " + "\n" +
                         "Secondary: Superhero name: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroIsHumanComparator().
                         thenComparing(new SuperheroNameComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 3) {
+            if (secondaryChoice == 3) {
                 System.out.println("Primary: Is human?, " + "\n" +
                         "Secondary: Superpower: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroIsHumanComparator().
                         thenComparing(new SuperheroSuperPowerComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 4) {
+            if (secondaryChoice == 4) {
                 System.out.println("Primary: Is human?, " + "\n" +
                         "Secondary: Real name: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroIsHumanComparator().
                         thenComparing(new SuperheroRealNameComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 5) {
+            if (secondaryChoice == 5) {
                 System.out.println("Primary: Is human?, " + "\n" +
                         "Secondary: Year created: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroIsHumanComparator().
                         thenComparing(new SuperheroYearCreatedComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 6) {
+            if (secondaryChoice == 6) {
                 System.out.println("Primary: Is human?, " + "\n" +
                         "Secondary: Strength: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroIsHumanComparator().
                         thenComparing(new SuperheroStrengthComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
         }
         if (choice == 6) {
@@ -565,40 +565,40 @@ public class UserInterface {
             int secondaryChoice = 0;
             secondaryChoice = scanner.nextInt();
 
-            if (choice == 2) {
+            if (secondaryChoice == 2) {
                 System.out.println("Primary: Strength, " + "\n" +
                         "Secondary: Superhero name: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroStrengthComparator().
                         thenComparing(new SuperheroNameComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 3) {
+            if (secondaryChoice == 3) {
                 System.out.println("Primary: Strength, " + "\n" +
                         "Secondary: Superpower: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroStrengthComparator().
                         thenComparing(new SuperheroSuperPowerComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 4) {
+            if (secondaryChoice == 4) {
                 System.out.println("Primary: Strength, " + "\n" +
                         "Secondary: Real name: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroStrengthComparator().
                         thenComparing(new SuperheroRealNameComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 5) {
+            if (secondaryChoice == 5) {
                 System.out.println("Primary: Strength, " + "\n" +
                         "Secondary: Year created: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroStrengthComparator().
                         thenComparing(new SuperheroYearCreatedComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
-            if (choice == 6) {
+            if (secondaryChoice == 6) {
                 System.out.println("Primary: Strength, " +
                         "Secondary: Is human?: ");
                 Collections.sort(controller.superHeroOverview(), new SuperheroStrengthComparator().
                         thenComparing(new SuperheroIsHumanComparator()));
-                System.out.println(controller.superHeroOverview());
+                superheroOverview();
             }
         }
 
