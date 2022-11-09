@@ -6,7 +6,7 @@ public class Superhero {
     private String superPowers;
     private String realName;
     private int yearCreated;
-    private String isHuman;      // make boolean
+    private String isHuman;      // TODO: make boolean
     private double strength;
 
 
@@ -72,7 +72,11 @@ public class Superhero {
     }
 
     public String toString() {
-        return superheroName + ", " + superPowers + ", " + realName + ", " + isHuman + ", " + strength;
+        return "\n" + "--------------------" + "\n" + "SUPERHERO #" + "\n" + "--------------------"
+                + "\n" + "Superhero name: " + superheroName + "\n" + "Super powers: "
+                + superPowers + "\n" + "Real name: " + realName + "\n"
+                + "Year created: " + yearCreated + "\n" +
+                "Is human? " + isHuman + "\n" + "Strength: " + strength + "\n";
     }
 
 }
